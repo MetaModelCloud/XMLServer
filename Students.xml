@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<students>
+<student>
+  <name>Nikolaj</name>
+  <surname>Ivanov</surname>
+  <age>23</age>
+  <group>PF-11</group>
+</student>
+<student>
+  <name>Petr</name>
+  <surname>Kilkin</surname>
+  <age>22</age>
+  <group>FP-22</group>
+</student>
+</students>
+
