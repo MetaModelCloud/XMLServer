@@ -17,7 +17,7 @@ public class Connect{
 	  catch (Exception e){
 	  e.printStackTrace();
 	  }
- }
+ }//nadyanadya
  
  public static void CreateTable(){	
 	 try{
