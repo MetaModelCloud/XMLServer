@@ -1,112 +1,103 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 import java.util.*;
-import java.io.*;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
-import org.xml.sax.*;
-
-class Student{
-private String name="";
-private String surname="";
-private int age=0;
-private String group=""; 
-
-public void setName (String name){
-	this.name = name;
-}
-public void setSurname (String surname){
-	this.surname = surname;
-}
-public void setAge (int age){
-	this.age = age;
-}
-public void setGroup (String group){
-	this.group = group;
-}
-public String getName() {
-	  return name;
-	}
-public String getSurname() {
-	  return surname;
-	}
-public int getAge() {
-	  return age;
-	}
-public String getGroup() {
-	  return group;
-	}
-}
-
-
-public class XMLParser
-{
-private static Document doc = null;
-private static String txt = "";
-private static Student tmpS = null; 
-private static List stds = null; 
-
-public static void DomHostsParser(String fName) 
-{
-  try
-  {
-	  
-   doc = parserXML(new File(fName));
-   stds = new ArrayList();
-   visit(doc, 0);
-   //Host tmp=null;
-  }
-  catch(Exception error)
-  {
-   error.printStackTrace();
-  }
-}
-
-public static void visit(Node node, int level) 
-{
-	 Connection con = null;
-     Connect cn = new Connect();
-	
-	
-  NodeList nl = node.getChildNodes();  
-  String parent="";
-  for(int i=0, cnt=nl.getLength(); i<cnt; i++)
-  {   
-   if (nl.item(i).getNodeType()==Node.TEXT_NODE){ 
-    parent=nl.item(i).getParentNode().getNodeName();
-    txt=nl.item(i).getNodeValue();
-    if (parent=="name"){ 
-     tmpS.setName(txt); 
+ 
+public class XMLParser {
+    public static class Attr {
+        public String name;
+        public String value;
+        Attr (String _name, String _value) {
+            name = _name;
+            value = _value;
+        }
     }
-    if (parent=="surname"){ 
-     tmpS.setSurname(txt);
+    public static class Node {
+        public Attr[] attrs; 
+        public String name; 
+        public List<Node> children;
+        Node(String _name, Attr[] _attrs) {
+            attrs = _attrs;
+            name = _name;
+            children = new ArrayList<Node>();
+        }
+        Node() { this("", null); }
+        static final String IndentString = "    ";
+        String print (int indent) {
+            StringBuilder res = new StringBuilder();
+            for (int i = 0; i < indent; i++) {
+                res.append(IndentString);
+            }
+            res.append("<" + name);
+            for (int i = 0; i < attrs.length; i++) {
+                String name = attrs[i].name;
+                String value = attrs[i].value;
+                if (i > 0) res.append(", ");
+                else res.append(" ");
+                res.append(name + " = \"" + value + "\"");
+            }
+            if (children.isEmpty()) {
+                res.append("/>\n");
+            } else {
+                res.append(">\n");
+                for (Node child : children) {
+                    res.append(child.print(indent + 1));
+                }
+                for (int i = 0; i < indent; i++) {
+                    res.append(IndentString);
+                }
+                res.append("</" + name + ">\n");
+            }
+            return res.toString();
+        }
+    }
+
+    public static class NodeList {
+        public Node head;
+        public NodeList tail;
+        NodeList(Node _head, NodeList _tail) {
+            head = _head;
+            tail = _tail;
+        }
+    }
+    public static Node root = new Node();
+    public static DefaultHandler handler = new DefaultHandler() {
+    	NodeList stack = new NodeList(root, null);
+    
+             
+    	public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {
+    		System.out.print(qName + " ");
+            int length = attrs.getLength();
+            Attr[] att = new Attr[length];
+            for (int i = 0; i < length; i++) {
+                String name = attrs.getQName(i);
+                String value = attrs.getValue(i);
+                att[i] = new Attr(name, value);
+                if (i > 0) System.out.print(", ");
+                System.out.print(name + " = \"" + value + "\"");
+            }
+            Node node = new Node(qName, att);
+            stack.head.children.add(node);
+            stack = new NodeList(node, stack);
+            System.out.println();
+    	}
      
+    	public void endElement(String uri, String localName, String qName) throws SAXException {
+            stack = stack.tail;
+    	}
+     
+    	public void characters(char ch[], int start, int length) throws SAXException {
+          
+    	}
+     };
+
+    public static void main(String argv[]) throws Exception {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser saxParser = factory.newSAXParser();
+        saxParser.parse("Namespace.xml", handler);
+        System.out.println(root.children.get(0).print(0));
     }
-    if (parent=="age"){  
-     tmpS.setAge(Integer.valueOf(txt));
-    }
-    if (parent=="group"){
-     tmpS.setGroup(txt);
-    }
-   } else {
-    if (nl.item(i).getNodeName().equals("student")){ 
-     tmpS=new Student();
-     stds.add(tmpS);
-    }
-   }
-   System.out.println(nl.item(i).getNodeName() + " = " + nl.item(i).getNodeValue());
-   
-   visit(nl.item(i), level+1);
-  }
-}
-public static Document parserXML(File file) throws SAXException, IOException, ParserConfigurationException 
-{
-  return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
-}
-public List getStds() {
-  return stds;
-}
-public void setStds(List stds) {
-  this.stds = stds;
-}
+ 
 }

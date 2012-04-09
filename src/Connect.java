@@ -17,7 +17,7 @@ public class Connect{
 	  catch (Exception e){
 	  e.printStackTrace();
 	  }
- }//nadyanadya
+ }
  
  public static void CreateTable(){	
 	 try{
@@ -62,14 +62,14 @@ public class Connect{
  }
  
  
- public static void main(String[] args) {
- Connect();
- CreateTable();
- AddString();
- String fName = "Students.xml";
- XMLParser.DomHostsParser(fName);
+// public static void main(String[] args) {
+// Connect();
+// CreateTable();
+// AddString();
+ //String fName = "Namespase.xml";
+ //XMLParser.parseXmlDocument(fName);
 
-  }
+ // }
 }
 
 /*import java.sql.Connection;
