@@ -18,6 +18,31 @@ public class Connect{
 	  e.printStackTrace();
 	  }
  }
+ public static void CreateTable(String Node){	
+	 try{
+		  Statement st = con.createStatement();
+		  String table =  
+				  "create table ? (id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL)";
+
+		  st.executeUpdate(table);
+		  System.out.println("Table creation process successfully!");
+		  }
+		  catch(SQLException s){
+		  System.out.println("Table all ready exists!");
+		  }
+ }
+ public static void AddColumn(String Node){	
+	 try{
+		  Statement st = con.createStatement();
+		  String table =  
+				  "alter table List add column name varchar(255)";
+		  st.executeUpdate(table);
+		  System.out.println("Table creation process successfully!");
+		  }
+		  catch(SQLException s){
+		  System.out.println("Table all ready exists!");
+		  }
+ }
  
  public static void CreateTableNameTable(){	
 	 try{
@@ -117,7 +142,9 @@ public class Connect{
  
  
  public static void main(String[] args) {
-// Connect();
+ Connect();
+ //AddColumn("aff");
+ //CreateTable("fdd");
 // CreateTableNameTable();
  //CreateTableMetaTable();
  //CreateTableTableDiagram();

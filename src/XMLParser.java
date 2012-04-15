@@ -116,11 +116,14 @@ public class XMLParser {
 
     public static void createTables(Node node) {
         if (node.name == "node") {
+        	Connect.Connect();
+        	Connect.CreateTable(node.name);
             HashMap<String,String> map = new HashMap<String,String>();
             for (Node child : node.children) {
                 collectValues (child, map);
             }
             for (String key : map.keySet()) {
+            	Connect.AddColumn(key);
                 System.out.print("(" + key + " = " + map.get(key) + ") ");
             }
             System.out.println();
