@@ -8,11 +8,24 @@
 	<classpathentry kind="lib" path="C:/Users/Nadusha/Downloads/xmlrpc-1.1_all.jar/xmlrpc-1.1_all.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/xmlrpc-1.1_all.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-continuation-8.1.2.v20120308.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-http-8.1.2.v20120308.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-io-8.1.2.v20120308.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-server-8.1.2.v20120308.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-util-8.1.2.v20120308.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-servlet-8.1.2.v20120308.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-servlets-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-ajp-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-annotations-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-client-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-deploy-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-jmx-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-jndi-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-overlay-deployer-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-plus-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-policy-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-rewrite-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-security-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-webapp-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/servlet-api-3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-xml-8.1.2.v20120308.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/jetty-websocket-8.1.2.v20120308.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
