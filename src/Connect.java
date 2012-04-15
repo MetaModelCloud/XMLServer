@@ -117,12 +117,12 @@ public class Connect{
  
  
  public static void main(String[] args) {
- Connect();
+// Connect();
 // CreateTableNameTable();
  //CreateTableMetaTable();
  //CreateTableTableDiagram();
  //AddStringMetaTable();
- AddStringNameTable();
+// AddStringNameTable();
 
  }
 }

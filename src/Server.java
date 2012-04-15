@@ -1,4 +1,4 @@
-  import java.net.InetAddress;
+/*  import java.net.InetAddress;
 
   import org.apache.xmlrpc.common.TypeConverterFactoryImpl;
   import org.apache.xmlrpc.demo.webserver.proxy.impls.AdderImpl;
@@ -21,7 +21,7 @@
            *   Calculator=org.apache.xmlrpc.demo.Calculator
            *   org.apache.xmlrpc.demo.proxy.Adder=org.apache.xmlrpc.demo.proxy.AdderImpl
            */
-          phm.load(Thread.currentThread().getContextClassLoader(),
+/*         phm.load(Thread.currentThread().getContextClassLoader(),
                    "MyHandlers.properties");
 
           /* You may also provide the handler classes directly,
@@ -31,7 +31,7 @@
            * phm.addHandler(org.apache.xmlrpc.demo.proxy.Adder.class.getName(),
            *     org.apache.xmlrpc.demo.proxy.AdderImpl.class);
            */
-          xmlRpcServer.setHandlerMapping(phm);
+  /*        xmlRpcServer.setHandlerMapping(phm);
         
           XmlRpcServerConfigImpl serverConfig =
               (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
@@ -40,4 +40,4 @@
 
           webServer.start();
       }
-  }
+  }*/

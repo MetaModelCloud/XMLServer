@@ -65,10 +65,9 @@ public class XMLParser {
     public static Node root = new Node();
     public static DefaultHandler handler = new DefaultHandler() {
     	NodeList stack = new NodeList(root, null);
-    
+        //root.children = new ArrayList<Node>();
              
     	public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {
-    		    
     		System.out.print(qName + " ");
             int length = attrs.getLength();
             Attr[] att = new Attr[length];
@@ -77,9 +76,7 @@ public class XMLParser {
                 String value = attrs.getValue(i);
                 att[i] = new Attr(name, value);
                 if (i > 0) System.out.print(", ");
-                Connect.Connect();
                 System.out.print(name + " = \"" + value + "\"");
-         
             }
             Node node = new Node(qName, att);
             stack.head.children.add(node);
@@ -92,15 +89,54 @@ public class XMLParser {
     	}
      
     	public void characters(char ch[], int start, int length) throws SAXException {
-          
+            // Nothing
     	}
      };
+
+    public static void collectValues(Node node, HashMap<String,String> map) {
+        for (int i = 0; i < node.attrs.length; i++) {
+            String name = node.attrs[i].name;
+            String value = node.attrs[i].value;
+            if (!map.containsKey(name)) {
+                map.put(name, value);
+            } else {
+                for (int j = 1; ;j++) {
+                    String newName = name + "_" + j;
+                    if (!map.containsKey(newName)) {
+                        map.put(newName, value);
+                        break;
+                    }
+                }
+            }
+        }
+        for (Node child : node.children) {
+            collectValues(child, map);
+        }
+    }
+
+    public static void createTables(Node node) {
+        if (node.name == "node") {
+            HashMap<String,String> map = new HashMap<String,String>();
+            for (Node child : node.children) {
+                collectValues (child, map);
+            }
+            for (String key : map.keySet()) {
+                System.out.print("(" + key + " = " + map.get(key) + ") ");
+            }
+            System.out.println();
+        } else {
+            for (Node child : node.children) {
+                createTables (child);
+            }
+        }
+    }
 
     public static void main(String argv[]) throws Exception {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
         saxParser.parse("Namespase.xml", handler);
         System.out.println(root.children.get(0).print(0));
+        createTables(root);
     }
  
 }
