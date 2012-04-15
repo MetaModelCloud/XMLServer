@@ -3,5 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8-bin.jar" sourcepath="libs/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nadusha/Downloads/jaxrpc-1_1-fr-spec-api/jaxrpc-1_1-fr-spec-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nadusha/Downloads/jaxrpc-10.3.jar/jaxrpc-10.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Nadusha/Downloads/xmlrpc-1.1_all.jar/xmlrpc-1.1_all.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Nadusha/workspace/MetaCloud/XMLServer/libs/xmlrpc-1.1_all.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
