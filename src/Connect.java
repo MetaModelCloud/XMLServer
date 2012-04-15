@@ -1,7 +1,9 @@
 import java.sql.*;
+import java.sql.PreparedStatement;
 
 public class Connect{
 	static Connection con = null;
+	static PreparedStatement stmt = null;
 
  public static void Connect(){
 	 try{
@@ -20,22 +22,23 @@ public class Connect{
  }
  public static void CreateTable(String Node){	
 	 try{
-		  Statement st = con.createStatement();
-		  String table =  
+		 stmt = con.prepareStatement("CREATE TABLE IF NOT EXISTS" +  Node+ " (id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL)");
+		/*  String table =  
 				  "create table ? (id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL)";
 
-		  st.executeUpdate(table);
+		  st.executeUpdate(table);*/
+		 stmt.setString(1,Node);
 		  System.out.println("Table creation process successfully!");
 		  }
 		  catch(SQLException s){
 		  System.out.println("Table all ready exists!");
 		  }
  }
- public static void AddColumn(String Node){	
+ public static void AddColumn(String Node, String key){	
 	 try{
 		  Statement st = con.createStatement();
 		  String table =  
-				  "alter table List add column name varchar(255)";
+				  "alter table ? add column ? varchar(255)";
 		  st.executeUpdate(table);
 		  System.out.println("Table creation process successfully!");
 		  }
@@ -144,7 +147,7 @@ public class Connect{
  public static void main(String[] args) {
  Connect();
  //AddColumn("aff");
- //CreateTable("fdd");
+ CreateTable("fdd");
 // CreateTableNameTable();
  //CreateTableMetaTable();
  //CreateTableTableDiagram();

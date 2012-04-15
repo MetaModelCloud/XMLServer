@@ -123,7 +123,7 @@ public class XMLParser {
                 collectValues (child, map);
             }
             for (String key : map.keySet()) {
-            	Connect.AddColumn(key);
+            	Connect.AddColumn(node.name,key);
                 System.out.print("(" + key + " = " + map.get(key) + ") ");
             }
             System.out.println();
