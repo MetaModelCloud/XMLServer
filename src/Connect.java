@@ -2,7 +2,6 @@ import java.sql.*;
 
 public class Connect{
 	static Connection con = null;
-	static PreparedStatement pstmt;
 
  public static void Connect(){
 	 try{
@@ -26,7 +25,7 @@ public class Connect{
 		  String table =  
 				  "create table nametable ( "
 					      + "   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL, "
-						  + "type MEDIUMINT NOT NULL,"
+						  + "type VARCHAR(255),"
 					      + " name VARCHAR(255),"
 					      + "qualifiedName VARCHAR(255))";
 
@@ -71,10 +70,32 @@ public class Connect{
 		  System.out.println("Table all ready exists!");
 		  }
  }
- public static void AddString(int gName, int rName){	
+ public static void AddStringMetaTable(){	
+	 try{
+		 Statement st = con.createStatement();
+		  String table = "INSERT INTO metatable (id, name, qualifiedName) VALUES (28, 'uscnActor', 'Actor')";
+		  st.executeUpdate(table);
+		  System.out.println("String Add process successfully!");
+		  }
+		  catch(SQLException s){
+		  System.out.println("String all ready exists!");
+		  }
+ }
+ public static void AddStringNameTable(){	
+	 try{
+		 Statement st = con.createStatement();
+		 String table =  "INSERT INTO nametable (id, type, name, qualifiedName) VALUES (28, 'line', ’uscnActor’, ’Actor’)";
+		 st.executeUpdate(table);
+		  System.out.println("String Add process successfully!");
+		  }
+		  catch(SQLException s){
+		  System.out.println("String all ready exists!");
+		  }
+ }
+/* public static void AddStringTableDiagram(){	
 	 try{
 		 PreparedStatement st = con.prepareStatement(
-			      "INSERT INTO MyQ378 (lastname, title, salary) VALUES (?, ?,2)");
+			      "INSERT INTO tablediagram (id, name, qualifiedName) VALUES (28, ’uscnActor’, ’Actor’)");
 		  st.setInt(111,123);
 		  System.out.println("Strinf Add process successfully!");
 		  }
@@ -92,14 +113,16 @@ public class Connect{
 		  catch(SQLException s){
 		  System.out.println("Table all ready exists!");
 		  }
- }
+ }*/
  
  
  public static void main(String[] args) {
  Connect();
- CreateTableNameTable();
- CreateTableMetaTable();
- CreateTableTableDiagram();
+// CreateTableNameTable();
+ //CreateTableMetaTable();
+ //CreateTableTableDiagram();
+ //AddStringMetaTable();
+ AddStringNameTable();
 
  }
 }
