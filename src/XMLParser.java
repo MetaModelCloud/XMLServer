@@ -68,6 +68,7 @@ public class XMLParser {
     
              
     	public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {
+    		    
     		System.out.print(qName + " ");
             int length = attrs.getLength();
             Attr[] att = new Attr[length];
@@ -76,7 +77,9 @@ public class XMLParser {
                 String value = attrs.getValue(i);
                 att[i] = new Attr(name, value);
                 if (i > 0) System.out.print(", ");
+                Connect.Connect();
                 System.out.print(name + " = \"" + value + "\"");
+         
             }
             Node node = new Node(qName, att);
             stack.head.children.add(node);
@@ -96,7 +99,7 @@ public class XMLParser {
     public static void main(String argv[]) throws Exception {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser saxParser = factory.newSAXParser();
-        saxParser.parse("Namespace.xml", handler);
+        saxParser.parse("Namespase.xml", handler);
         System.out.println(root.children.get(0).print(0));
     }
  
