@@ -1,0 +1,80 @@
+<graphicTypes>
+<node name="Line">
+                <graphics>
+                    <picture sizex="107" sizey="38">
+                        <rectangle fill="#ffffff" stroke-style="solid"/>
+                        <line y1="0" x1="300" y2="0" x2="500"/>
+                    </picture>
+                    <labels>
+                    </labels>
+                    <ports>
+                        <pointPort x="0" y="450"/>
+                        <pointPort x="0" y="300"/>
+                        <pointPort x="0" y="500"/>
+                        <linePort>
+                        </linePort>
+                    </ports>
+                </graphics>
+                <logic>
+                    <container/>
+                    <properties>
+                        <property type="String" name="Line"/>
+                    </properties>
+                </logic>
+            </node>
+
+<node name="Rectangle">
+                <graphics>
+                    <picture sizex="200" sizey="200">
+                        <rectangle fill="#ffffff" stroke-width="0"/>
+                        <line y1="0" x1="20" y2="0" x2="180"/>
+                        <line y1="200" x1="20" y2="200" x2="180"/>
+                    </picture>
+                    <ports>
+                      <pointPort x="20" y="100"/>
+                      <pointPort x="80" y="0"/>
+                      <pointPort x="80" y="200"/>
+                      <pointPort x="180" y="100"/>
+                      <pointPort x="80" y="100"/>
+                         <linePort>
+                            <start startx="180" starty="0"/>
+                            <end endx="20" endy="200"/>
+                         </linePort>
+                         <linePort>
+                            <start startx="9" starty="34"/>
+                            <end endx="76" endy="35"/>
+                        </linePort>
+                    </ports>
+                </graphics>
+                <logic>
+                    <container/>
+                      <contains type="Node01"/>
+                      <contains type="Node02"/>
+                      <contains type="Node03"/>
+                    <container/>
+                    <properties>
+                        <property type="String" name="Rectangle"/>
+                    </properties>
+                </logic>
+            </node>
+  <node name="Text">
+               <graphics>
+                   <picture sizex="72" sizey="45">
+                        <rectangle fill="#ffffff" stroke-style="solid"/>
+                </picture>
+                    <labels>
+                        <label x="16" y="7" text="Text"/>
+                    </labels>
+                    <ports>
+                        <linePort>
+                            <start startx="4" starty="0"/>
+                            <end endx="60" endy="1"/>
+                        </linePort>
+                    </ports>
+                </graphics>
+                <logic>
+                    <container/>
+                </logic>
+            </node>
+</graphicTypes>
+

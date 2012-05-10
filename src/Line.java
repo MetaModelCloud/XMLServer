@@ -1,18 +1,17 @@
-import java.io.*;
 import java.util.*;
 
-public class Line {
+public class Line extends AbstractElement {
 
 	private static int TOTALOBJECTS = 0;
-
-	private static int 
 	
-	private Object[] values;
+	private final int ID;
+
+	
+//	private Class[] types; TODO: to be done
 	
 //	private int id = 0;
 //	private int sizeX = 100;
 //	private int sizeY = 200;
-
 	// public String fill = "#ffffff";
 	// public String solid = "solid";
 	// public int x1 = 0;
@@ -28,13 +27,14 @@ public class Line {
 	// public String type = "String";
 	// public String name = "Line";
 
-	public Line(int colNumber, AttributePair[] attributes) {
-		this.id = ++ID;
-		values = new Object[colNumber];
+	public Line(int colNumber, List<AttributePair> attributes, Hashtable<String, Integer> namesTable) {
+		super(colNumber, attributes, namesTable);
+		this.ID = ++TOTALOBJECTS;
 	}
 
+
 	public int getID() {
-		return id;
+		return ID;
 	}
 
 }

@@ -1,8 +1,12 @@
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.util.*;
 
 public class XMLParser {
@@ -67,6 +71,7 @@ public class XMLParser {
 	}
 
 	public static Node root = new Node();
+	
 	public static DefaultHandler handler = new DefaultHandler() {
 		NodeList stack = new NodeList(root, null);
 
@@ -126,25 +131,55 @@ public class XMLParser {
 		}
 	}
 
-	public static List<AttributePair> createTables(Node node) {
+	public static List<AttributePair> GetListOfAttributes(Node node) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		List<AttributePair> list = new ArrayList<AttributePair>();
 		for (Node child : node.children) {
 			collectValues(child, map, list);
 		}
+		
 		for (AttributePair key : list) {
 			System.out.print("(" + key.name + " = " + key.value + ") ");
 		}
 		System.out.println();
+		
 		return list;
 	}
 
-	public static void main(String argv[]) throws Exception {
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		SAXParser saxParser = factory.newSAXParser();
-		saxParser.parse("Namespase.xml", handler);
+	
+	public static List<AttributePair> getXMLElements() {
+		try {
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser saxParser = factory.newSAXParser();
+			saxParser.parse("Namespace.xml", handler);
+		} catch (SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// System.out.println(root.children.get(0).print(0));
-		createTables(root.children.get(0).children.get(0));
+		return GetListOfAttributes(root.children.get(0).children.get(0));
 	}
+	
+//	public static void main(String argv[]) throws Exception {
+
+		
+//		Class<? extends AbstractElement> classForElement = (Class<? extends AbstractElement>) Class.forName(FirstElement.get(FirstElement.size() - 1).value);
+//		Class<? extends TupleDB> classForTuple = (Class<? extends TupleDB>) Class.forName(FirstElement.get(FirstElement.size() - 1).value + "DB");
+//		Constructor<? extends AbstractElement> elementConstructor;
+//		Constructor<?> constructors[] = classForElement.getConstructors();
+//		for (Constructor<?> c : constructors)
+//			if (c.getParameterTypes().length > 0) {
+//				elementConstructor = (Constructor<? extends AbstractElement>) c;
+//				break;
+//			}
+//		
+//		AbstractElement element = c.newInstance();
+//		TupleDB tuple = classForTuple.newInstance();
+		
+		
+//	}
 
 }
